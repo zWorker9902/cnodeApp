@@ -1,0 +1,159 @@
+@charset "UTF-8";
+/*个人中心*/
+.user ion-content {
+  background-color: #F4F4F4; }
+
+.user .head {
+  background: url(../img/user/bg.jpg) no-repeat;
+  background-size: 100%;
+  background-repeat: round;
+  padding: 15px 0;
+  overflow: hidden; }
+
+.user .head .img {
+  width: 25%;
+  display: block;
+  margin: 0 auto; }
+
+.user .head .img img {
+  border-radius: 50px;
+  width: 100%; }
+
+.user .head .sign, .user .head .interest {
+  text-align: center; }
+
+.user .head .sign h2 {
+  font-size: 16px;
+  color: #fff;
+  padding-top: 15px;
+  border-bottom: 5px; }
+
+.user .head .sign .button-small {
+  background: #fff;
+  border: none;
+  padding: 0 8px;
+  height: 26px;
+  line-height: 26px;
+  min-height: 26px;
+  color: #777; }
+
+.user .head .arrow {
+  width: 10%;
+  float: right;
+  padding-top: 9%;
+  display: none; }
+
+.user .head .arrow .ion-ios-arrow-right {
+  font-size: 33px;
+  color: #476e89; }
+
+.user .head .interest h2 {
+  font-size: 16px;
+  padding-top: 10px;
+  font-weight: bold;
+  color: #fff;
+  border-bottom: 5px; }
+
+.user .head .interest .button-small {
+  font-size: 13px;
+  color: #fff;
+  margin-right: 5px;
+  height: 26px;
+  line-height: 26px; }
+
+.user .list {
+  margin: 0;
+  padding: 0px; }
+
+.user .list .item {
+  padding: 12px 0 12px 47px;
+  color: #666;
+  font-size: 15px;
+  border-left: none;
+  border-right: none; }
+
+.user .list .item:first-child {
+  border-top: none; }
+
+.user .list .icon {
+  font-size: 27px;
+  color: #00b0df; }
+
+.user .list .after {
+  font-size: 20px;
+  color: #999;
+  right: 12px; }
+
+.user .list .package {
+  border-top: solid 1px #ddd;
+  border-bottom: solid 1px #ddd;
+  overflow: hidden;
+  padding-left: 10px;
+  background: #fff; }
+
+.user .list .package .item {
+  display: block;
+  margin-bottom: 1px;
+  border-bottom: solid 1px #eaeaea;
+  padding: 12px 0 12px 37px; }
+
+.user .list .package .item:last-child {
+  border-bottom: none; }
+
+.user .list .package .qing {
+  border: none; }
+
+.user .list .package .icon {
+  left: 1px; }
+
+.user .list .package .after {
+  font-size: 20px;
+  color: #999;
+  right: 8px;
+  left: inherit; }
+
+.user .list .cvs {
+  font-size: 14px;
+  padding-right: 13px; }
+
+.user .hasnews {
+  font-size: 12px;
+  color: #EF3C00; }
+
+.bind .list {
+  margin-top: 10px; }
+
+.bind .list .item:first-child {
+  border-top: 1px solid #EAEAEA; }
+
+.bind .list .after {
+  font-size: 14px;
+  color: #387ef5; }
+
+.user .row {
+  border-bottom: 1px solid #EAEAEA;
+  padding: 0;
+  background-color: #fff;
+  margin: 0; }
+
+.user .col {
+  text-align: center;
+  padding: 3% 0;
+  border-right: 1px solid #EAEAEA; }
+
+.user .row .col:last-child {
+  border: none; }
+
+.user .col img {
+  width: 35%;
+  padding-bottom: 6px; }
+
+.user .button-positive {
+  background: url(../img/user/buttom.png) #611286;
+  top: 30px;
+  background-repeat: round;
+  width: 85%;
+  margin: 0 auto;
+  border: none; }
+
+/*# sourceMappingURL=user.css.map */

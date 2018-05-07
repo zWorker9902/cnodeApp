@@ -1,0 +1,66 @@
+<ion-view class="settings" cache-view="false">
+    <ion-content>
+        <div class="login" ng-if="false">
+            <a href="" class="user">
+                <img src="" onerror="this.src='image/default_user.png'">
+            </a>
+            <div class="info">
+                <span class="name">zWorker9902</span>
+                <span class="grade">88 积分</span>
+            </div>
+        </div>
+
+        <div class="unlogin">
+            <a href="" class="user">
+                <img src="image/default_user.png">
+            </a>
+            <a class="opr" ui-sref="login" menu-close>
+                登录/注册
+            </a>
+        </div>
+
+        <div class="setting">
+            <a class="setting_item" menu-close>
+                <i class="icon-blog"></i>
+                头条
+            </a>
+            <a class="setting_item" menu-close>
+                <i class="icon-good"></i>
+                精华
+            </a>
+            <a class="setting_item" menu-close>
+                <i class="icon-share"></i>
+                分享
+            </a>
+            <a class="setting_item" menu-close>
+                <i class="icon-ask"></i>
+                问答
+            </a>
+            <a class="setting_item" menu-close>
+                <i class="icon-job"></i>
+                招聘
+            </a>
+        </div>
+
+        <ul class="list">
+            <li class="item item-toggle">
+                开启最新提示
+                <label class="toggle toggle-positive">
+                    <input type="checkbox" checked="">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li class="item item-toggle">
+                无图模式
+                <label class="toggle toggle-calm">
+                    <input type="checkbox" checked="">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

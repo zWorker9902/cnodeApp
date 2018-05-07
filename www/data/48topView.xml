@@ -1,0 +1,212 @@
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title type="text">博客园_48小时阅读排行</title>
+    <id>
+        uuid:821f5112-7b59-43af-8d64-521a18619208;id=215418
+    </id>
+    <updated>2018-03-09T09:01:13Z</updated>
+
+    <entry>
+        <id>8526560</id>
+        <title type="text">快速开发 HTML5 交互式地铁线路图</title>
+        <summary type="text">
+            感觉目前地铁上的地铁线路图也不是很人性化，很多交互方面没有考虑到用户的需求？感觉总是有各种容易看串的信息，利用 html5 canvas 完成的这个交互式地铁线路图 Demo，如果地铁上的展示信息稍微有点交互会怎么样？不用忙着上车下车，轻轻一点，就能省去很多时间。
+        </summary>
+        <published>2018-03-08T09:26:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>xhload3d</name>
+            <uri>http://www.cnblogs.com/xhload3d/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/591709/20180305142816.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/xhload3d/p/8526560.html"/>
+        <diggs>35</diggs>
+        <views>2882</views>
+        <comments>16</comments>
+    </entry>
+
+    <entry>
+        <id>8506278</id>
+        <title type="text">双刃剑MongoDB的学习和避坑</title>
+        <summary type="text">
+            双刃剑MongoDB的学习和避坑 MongoDB 是一把双刃剑，它对数据结构的要求并不高。数据通过key value的形式存储，而value的值可以是字符串，也可以是文档。所以我们在使用的过程中非常方便。正是这种方便给我们埋下了一颗颗地雷。当内嵌的文档太深，或者内嵌文档有相同的属性名。你会被炸得很惨
+        </summary>
+        <published>2018-03-07T21:53:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>ITDragon龙</name>
+            <uri>http://www.cnblogs.com/itdragon/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/806956/20170928181754.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/itdragon/p/8506278.html"/>
+        <diggs>12</diggs>
+        <views>2696</views>
+        <comments>2</comments>
+    </entry>
+    <entry>
+        <id>8493764</id>
+        <title type="text">ASP.NET Core 2.0 : 六. 举个例子来聊聊它的依赖注入</title>
+        <summary type="text">
+            本文通过一个维修工与工具库的例子形象的描述一下为什么要用依赖注入、它的工作原理是什么样的, 然后根据这个类比一下ASP.NET Core 中的依赖注入, 从而深刻了解它的使用方法、注意事项以及回收机制等. ASP.NET Core 系列目录 本文主要内容: 1.为什么要用依赖注入(DI) 2.容器的
+        </summary>
+        <published>2018-03-08T07:22:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>FlyLolo</name>
+            <uri>http://www.cnblogs.com/FlyLolo/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/548134/20171127163211.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/FlyLolo/p/ASPNETCore2_6.html"/>
+        <diggs>40</diggs>
+        <views>2067</views>
+        <comments>13</comments>
+    </entry>
+    <entry>
+        <id>8525249</id>
+        <title type="text">重温.NET下Assembly的加载过程</title>
+        <summary type="text">
+            最近在工作中牵涉到了.NET下的一个古老的问题：Assembly的加载过程。虽然网上有很多文章介绍这部分内容，很多文章也是很久以前就已经出现了，但阅读之后发现，并没能解决我的问题，有些点写的不是特别详细，让人看完之后感觉还是云里雾里。最后，我决定重新复习一下这个经典而古老的问题，并将所得总结于此，然...
+        </summary>
+        <published>2018-03-07T20:50:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>dax.net</name>
+            <uri>http://www.cnblogs.com/daxnet/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/119825/20180309082437.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/daxnet/p/8525249.html"/>
+        <diggs>50</diggs>
+        <views>2033</views>
+        <comments>13</comments>
+    </entry>
+    <entry>
+        <id>8524843</id>
+        <title type="text">为什么你应该停止阅读新闻?</title>
+        <summary type="text">
+            Tips 原文地址： "Why You Should Stop Reading News" 原文作者： "Farnam Street" 我们花费数小时时间来消费新闻，因为我们希望得到充分的信息。但这段时间过得好吗？新闻的定义是不持久的。而且随着新闻变得更容易分发和制作成本更低，质量也下降了。 我们很
+        </summary>
+        <published>2018-03-07T19:35:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>林本托</name>
+            <uri>http://www.cnblogs.com/IcanFixIt/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/718178/20170204175715.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/IcanFixIt/p/8524843.html"/>
+        <diggs>15</diggs>
+        <views>1281</views>
+        <comments>0</comments>
+    </entry>
+    <entry>
+        <id>8526935</id>
+        <title type="text">拥抱.NET Core系列：MemoryCache 缓存选项</title>
+        <summary type="text">
+            在上一篇 ”拥抱.NET Core系列：MemoryCache 缓存过期” 中我们详细的了解了缓存过期相关的内容，今天我们来介绍一下 MSCache 中的 Options，由此来介绍一些 MSCache 中的内部机制。MSCache项目MSCache 目前最新的正式版是 2.0.0，预览版是2.1....
+        </summary>
+        <published>2018-03-08T10:31:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>KAnts</name>
+            <uri>http://www.cnblogs.com/ants/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/384997/20161114161534.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/ants/p/8526935.html"/>
+        <diggs>10</diggs>
+        <views>954</views>
+        <comments>3</comments>
+    </entry>
+    <entry>
+        <id>8526182</id>
+        <title type="text">
+            【原】无脑操作：IDEA + maven + SpringBoot + JPA + Thymeleaf实现CRUD及分页
+        </title>
+        <summary type="text">
+            一、开发环境： 1、windows 7 企业版 2、IDEA 14 3、JDK 1.8 4、Maven 3.5.2 5、MariaDB 6、SQLYog 二、Maven设置： Maven目录下的conf目录下的settings.xml做如下内容的添加： 1、使用阿里云的仓库，比官网访问速度快很多 2
+        </summary>
+        <published>2018-03-08T00:21:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>{name:&quot;代码屠夫&quot;}</name>
+            <uri>http://www.cnblogs.com/iflytek/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/438252/20170205145127.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/iflytek/p/8526182.html"/>
+        <diggs>3</diggs>
+        <views>941</views>
+        <comments>0</comments>
+    </entry>
+    <entry>
+        <id>8531046</id>
+        <title type="text">物联网框架ServerSuperIO在.NetCore实现跨平台的实践路线</title>
+        <summary type="text">
+            正所谓天下大势，不跟风不行。你不跨平台，很low嘛。java说：你们能跨嘛，跨给我看看。C#说：不要强人所难嘛。java说：能部署在云上吗？docker？微服务？C#说：不要强人所难嘛。java说：你能干啥？C#说：能干啥有必要和你说嘛，我只自己玩。Php说：就服你两装B的样子。哈哈！ 噢java改...
+        </summary>
+        <published>2018-03-08T21:44:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>唯笑志在</name>
+            <uri>http://www.cnblogs.com/lsjwq/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/279374/20160822092145.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/lsjwq/p/8531046.html"/>
+        <diggs>5</diggs>
+        <views>694</views>
+        <comments>2</comments>
+    </entry>
+    <entry>
+        <id>8521812</id>
+        <title type="text">systemd 编写服务管理脚本</title>
+        <summary type="text">
+            我们运行 linux 服务器的主要目的是通过运行程序提供服务，比如 mysql、web server等。因此管理 linux 服务器主要工作就是配置并管理上面运行的各种服务程序。在 linux 系统中服务程序的管理主要由 init 系统负责。如同笔者在《初识 systemd》一文中的介绍，linux
+        </summary>
+        <published>2018-03-08T08:50:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>sparkdev</name>
+            <uri>http://www.cnblogs.com/sparkdev/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/952033/20160916141655.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/sparkdev/p/8521812.html"/>
+        <diggs>7</diggs>
+        <views>636</views>
+        <comments>4</comments>
+    </entry>
+    <entry>
+        <id>8521378</id>
+        <title type="text">程序员的自我救赎---12.2.2： 虚拟币交易平台（区块链） 中 【开发交易所】</title>
+        <summary type="text">
+            《前言》 （一） Winner2.0 框架基础分析 （二）PLSQL报表系统 （三）SSO单点登录 （四） 短信中心与消息中心 （五）钱包系统 （六）GPU支付中心 （七）权限系统 （八）监控系统 （九）会员中心 （十） APP版本控制系统 （十一）Winner前端框架与RPC接口规范讲解 （十二）
+        </summary>
+        <published>2018-03-07T18:06:00+08:00</published>
+        <updated>2018-03-09T09:01:13Z</updated>
+        <author>
+            <name>Near_wen</name>
+            <uri>http://www.cnblogs.com/demon28/</uri>
+            <avatar>
+                http://pic.cnblogs.com/face///pic.cnblogs.com/face/161176/20171123184231.png
+            </avatar>
+        </author>
+        <link rel="alternate" href="http://www.cnblogs.com/demon28/p/8521378.html"/>
+        <diggs>4</diggs>
+        <views>625</views>
+        <comments>3</comments>
+    </entry>
+</feed>

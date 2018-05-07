@@ -1,0 +1,61 @@
+<ion-view title="我的" class="user">
+
+    <ion-content>
+
+    	<div class="head" href="#">
+          <div class="img">
+              <img src="img/user/toux.png">
+          </div>
+          <div class="interest" ng-if=$root.user>
+              <h2>{{::$root.user.company}}</h2>
+          </div>
+          <div class="sign" ng-if=!$root.user>
+              <a href="#/login/">
+                  <h2>登录/注册</h2>
+              </a>
+          </div>
+          <div class="arrow">
+              <a class="icon ion-ios-arrow-right"></a>
+          </div>
+        </div>
+
+        <div class="row">
+        	<a class="col" ng-click="messageList()">
+            	<img src="img/user/i03.png"><br/>
+                消息
+            </a>
+            <a class="col" ng-click="myshop()">
+            	<img src="img/user/i05.png"><br/>
+                我的商铺
+            </a>
+        	<a class="col">
+            	<img src="img/user/i01.png" ng-click="location()"><br/>
+                商家定位
+            </a>
+            <a class="col" ng-click="manageProduct()">
+            	<img src="img/user/i02.png"><br/>
+                产品管理
+            </a>
+        </div>
+        <div class="row">
+        	<a class="col" ng-click="shareApp()">
+            	<img src="img/user/i05.png"><br/>
+                分享给朋友
+            </a>
+            <a class="col" href="#/favorite">
+            	<img src="img/user/i06.png"><br/>
+                我的收藏
+            </a>
+            <a class="col" href="#/suggest">
+            	<img src="img/user/i08.png"><br/>
+                意见反馈
+            </a>
+            <a class="col" href="#/setting">
+            	<img src="img/user/i12.png"><br/>
+                设置
+            </a>
+        </div>
+        <button class="button button-full button-positive" type="submit" ng-if="$root.user" ng-click="loginOut()"></button >
+
+    </ion-content>
+</ion-view>

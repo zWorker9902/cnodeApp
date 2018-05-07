@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>indexedDB：浏览器端数据库 </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <script src="http://www.xueersi.com/lib/jQuery/1.11.1/jquery.min.js?1458897912"></script>
+  <style type="text/css">
+    ul,li{
+      list-style: none;
+      float: left;
+      width: 100%;
+    }
+
+    .user{
+      display: block;
+      margin: 0 auto;
+      border: 1px solid green;
+      width: 140px;
+      height: 140px;
+    }
+
+  </style>
+</head>
+<body>
+<button id="add">添加数据</button>
+<button id="get">获取数据</button>
+<button id="delete">删除一条数据</button>
+<button id="updata">更新数据</button>
+<button id="clear">清空object store</button>
+<button id="saveblob">保存图片</button>
+<button id="getblob">获取图片</button>
+<button id="worker">Web Worker</button>
+<ul id="display"></ul>
+
+<img src="" class="user" onerror='this.src="./img.gif" '>
+<div>
+  <span id="sworker"></span>
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+  //ie浏览器需要在测试环境中才能运动
+  const customerData = [
+    { ssn: "111-111-111", name: "Bill", age: 35, email: "bill@company.com" },
+    { ssn: "222-222-222", name: "Donna", age: 32, email: "donna@home.org" },
+    { ssn: "333-333-333", name: "duxinli", age: 38, email: "duxinli@home.org" }
+  ];
+  const dbName = "test_duxinli_DB";
+
+  // 创建或打开数据库，并配置版本号
+  var request = indexedDB.open(dbName, 2);
+  request.onerror = function(event) {
+    // 错误处理程序在这里。
+  };
+
+  var db;
+  request.onupgradeneeded = function(event) {
+    db = event.target.result;
+
+    // 创建一个对象存储空间来持有有关我们客户的信息。
+    // 我们将使用 "ssn" 作为我们的 key path 因为它保证是唯一的。
+    var objectStore = db.createObjectStore("customers", { keyPath: 'ssn', autoIncrement: true });
+
+    // 创建一个索引来通过 name 搜索客户。
+    // 可能会有重复的，因此我们不能使用 unique(唯一) 索引。
+    objectStore.createIndex("name", "name", { unique: false });
+
+    // 创建一个索引来通过 email 搜索客户。
+    // 我们希望确保不会有两个客户使用相同的 email 地址，因此我们使用一个 unique 索引。
+    objectStore.createIndex("email", "email", { unique: false });
+
+    var imageStore = db.createObjectStore("userimage",  {keyPath: 'name', autoIncrement: true });
+
+    // 在新创建的对象存储空间中保存值
+    for (var i in customerData) {
+      objectStore.add(customerData[i]);
+    }
+  };
+  request.onsuccess = function(e) {
+    console.log("Success!");
+    db = e.target.result;
+  }
+
+  request.onerror = function(e) {
+    console.log("Error");
+    console.dir(e);
+  }
+
+  //获取数据
+  function displayPubList() {
+    $('#display').empty();
+    // 打开一个事务，blockbusters object store，可读可写
+    var tx = db.transaction('customers', 'readonly');
+    // 获取 blockbusters
+    var store = tx.objectStore('customers');
+    var req;
+
+    req = store.count();
+    console.log(req);
+    req.onsuccess = function(evt) {
+      console.log(evt.target.result)
+    };
+    req.onerror = function(evt) {
+      console.error("add error", this.error);
+    };
+    req.onerror = function(evt) {
+      console.error("add error", this.error);
+      displayActionFailure(this.error);
+    };
+
+    // 使用游标遍历数据
+    req = store.openCursor();
+    req.onsuccess = function(evt) {
+      var cursor = evt.target.result;
+      if(cursor){
+        var result = evt.target.result.value;
+        var val = result.ssn + "----"+ result.name + "----"+ result.age + "----"+ result.email;
+        $('#display').append('<li>'+ val+'</li>')
+        cursor.continue();
+      }
+    }
+  }
+
+  function addPublication() {
+    if (!db) {
+      return;
+    }
+
+    //点击快了i相同就会报错，ssn键值不能相同
+    var i = Date.parse(new Date()).toString().substr(0, 10);
+    var tx = db.transaction('customers', 'readwrite');
+    var store = tx.objectStore('customers');
+    var req = store.add({ ssn: "8-88-88-"+i, name: "xiaohong"+i, age: 40, email: "xiaohong-"+i+"-@home.org" });
+    req.onsuccess = function (evt) {
+      displayPubList();
+    };
+    req.onerror = function() {
+      console.error("add error", this.error);
+    };
+  }
+
+  $(function(){
+    $('#get').click(function(){
+      displayPubList();
+    })
+    $('#add').click(function(){
+      addPublication();
+    })
+
+    $('#delete').click(function(evt) {
+      var k = '444-44-4444';
+      var tx = db.transaction('customers', 'readwrite');
+      var store = tx.objectStore('customers');
+
+      var req = store.get(k);
+      req.onsuccess = function(evt) {
+        var record = evt.target.result;
+
+        if (typeof record != 'undefined') {
+          req = store.delete(k);
+        }
+        displayPubList();
+      };
+      req.onerror = function (evt) {
+        console.error("delete:", evt.target.errorCode);
+      };
+    });
+
+    //更新数据
+    $('#updata').click(function(){
+      var tx = db.transaction('customers', 'readwrite');
+      var store = tx.objectStore('customers');
+      var req = store.get('555-55-5555');
+
+      req.onsuccess=function(e){
+        var student=e.target.result;
+        if(typeof record != 'undefined'){
+          student.age=26;
+          student.name="hanjinshan";
+          student.email="hanjinshan@home.org";
+          store.put(student);
+        }
+        displayPubList();
+      };
+    });
+
+    //删除数据仓库
+    $('#clear').click(function(){
+      var tx = db.transaction('customers', 'readwrite');
+      var store = tx.objectStore('customers');
+      store.clear();
+      displayPubList();
+    });
+
+    /*调用数据库实例的deleteObjectStore方法可以删除一个object store，这个就得在onupgradeneeded里面调用了
+     if(db.objectStoreNames.contains('students')){
+     db.deleteObjectStore('customers');
+     }*/
+
+    $('#saveblob').click(function(){
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("get", "./test.png", true);
+      xhr.responseType = "blob";
+      xhr.addEventListener('load', function(){
+        if (this.status === 200) {
+          console.log("Image retrieved");
+          var blob = this.response;
+          var tx = db.transaction('userimage', 'readwrite');
+          var store = tx.objectStore('userimage');
+          var req = store.add({
+            name: "张三", head: blob
+          });
+          req.onsuccess = function (evt) {
+            console.log("add success");
+          };
+          req.onerror = function () {
+            console.error("add error", this.error);
+          };
+
+        }
+      });
+      xhr.send();
+    });
+
+    $("#getblob").click(function(){
+      var dbcontext = db.transaction('userimage', 'readwrite');
+      var store = dbcontext.objectStore('userimage');
+      var req = store.get("张三");
+
+      req.onsuccess = function (evt) {
+        console.log("get success");
+
+        var blob = event.target.result.head;
+        window.URL = window.URL || window.webkitURL;
+        var img = document.querySelector(".user");
+        img.onload = function(e) {
+          window.URL.revokeObjectURL(img.src); // 清除释放
+        };
+        img.src = window.URL.createObjectURL(blob);
+      };
+      req.onerror = function() {
+        console.log("get error", this.error);
+      };
+    });
+
+
+    $("#worker").click(function(){
+      if (window.Worker) {
+        if(demoWorker){
+          demoWorker.terminate();
+        }
+
+        var demoWorker = new Worker('worker.js');
+        demoWorker.postMessage(["10"]);
+        demoWorker.onmessage = function(e) {
+          console.log('Message received from worker');
+          var interval = e.data;
+          $("#sworker").text(interval);
+        }
+      }
+    });
+  })
+</script>

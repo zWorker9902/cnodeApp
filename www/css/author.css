@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* 个人中心 */
+.author .header {
+  border: 1px solid red;
+  box-sizing: border-box;
+  padding: 10px; }
+  .author .header .top {
+    border: 1px solid red;
+    padding: 0; }
+    .author .header .top > a {
+      width: 68px;
+      height: 68px;
+      margin-bottom: 18px;
+      border: 1px solid red;
+      border-radius: 50%; }
+      .author .header .top > a img {
+        width: 100%;
+        height: 100%; }
+
+/*# sourceMappingURL=author.css.map */

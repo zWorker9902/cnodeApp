@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* 个人中心 */
+.author {
+  background-color: #fff; }
+  .author .header {
+    border: 1px solid red;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column; }
+    .author .header > .top {
+      float: left;
+      background-color: transparent;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      align-content: center;
+      justify-content: flex-start; }
+      .author .header > .top > a {
+        width: 68px;
+        height: 68px; }
+        .author .header > .top > a img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
+      .author .header > .top .info {
+        flex: 1;
+        padding: 0px;
+        margin: 0px;
+        padding-left: 12px;
+        box-sizing: border-box; }
+        .author .header > .top .info .name {
+          display: block;
+          width: 100%;
+          line-height: 24px;
+          color: #151517;
+          font-size: 20px; }
+        .author .header > .top .info .github {
+          display: block;
+          width: 100%;
+          color: #151517;
+          font-size: 14px;
+          box-sizing: border-box;
+          position: relative; }
+          .author .header > .top .info .github > i {
+            position: absolute;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            top: 2px; }
+          .author .header > .top .info .github .url {
+            margin-left: 20px;
+            display: inline-block;
+            padding: 0px;
+            text-decoration: underline;
+            color: #b7b7e0; }
+        .author .header > .top .info .create {
+          display: block;
+          width: 100%;
+          line-height: 22px;
+          color: #929292;
+          font-size: 12px; }
+    .author .header .bottom {
+      float: left;
+      margin-top: 10px; }
+      .author .header .bottom .bt_item {
+        display: block;
+        padding: 0px;
+        margin: 0px;
+        width: 80px; }
+        .author .header .bottom .bt_item .title {
+          width: 100%;
+          display: block;
+          float: left;
+          height: 18px;
+          line-height: 18px;
+          color: #a0adb9;
+          text-align: center; }
+        .author .header .bottom .bt_item .data {
+          width: 100%;
+          display: block;
+          float: left;
+          height: 14px;
+          line-height: 14px;
+          color: #151517;
+          text-align: center; }
+  .author .ar_info {
+    margin-top: 18px;
+    border: 1px solid red;
+    background-color: #f4f6f9; }
+    .author .ar_info .item {
+      border: 1px solid red;
+      background-color: #fff;
+      margin-top: 4px;
+      font-size: 16px;
+      color: #464648; }
+      .author .ar_info .item .item-note {
+        color: #8a9aa9; }
+
+/*# sourceMappingURL=dynamic.css.map */

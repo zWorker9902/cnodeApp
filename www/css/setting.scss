@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+.settings{
+  //background-color: #2b2f3e;
+  background-image: url("../image/bg.png");
+  background-size: cover;
+  background-position: center;
+
+  .login{
+    height: 184px;
+    background-color: transparent;
+    //border: 1px solid red;
+    padding: 50px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+    &>.user{
+      margin: auto 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid #5d6170;
+      display: flex;
+
+      img{
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        margin: auto;
+      }
+    }
+
+    &>.info{
+      width: 120px;
+      height:  56px;
+      //border: 1px solid red;
+      margin: auto 4px;
+      font-size: 14px;
+
+      .name{
+        line-height: 28px;
+        color: #fff;
+        width: 100%;
+        float: left;
+        display: block;
+      }
+      .grade{
+        line-height: 28px;
+        color: #dc600b;
+        width: 100%;
+        float: left;
+        display: block;
+      }
+    }
+  }
+
+  .unlogin{
+    height: 184px;
+    background-color: transparent;
+    padding: 50px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &>.user{
+      margin: auto 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid #5d6170;
+      display: flex;
+
+      img{
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        margin: auto;
+      }
+    }
+
+    &>.opr{
+      position: absolute;
+      bottom: 32px;
+      margin: auto;
+      font-size: 14px;
+      color: #ccc;
+    }
+    .activated{
+      color: #fff;
+    }
+  }
+
+
+  .setting{
+    background-color: transparent;
+    border-top: 1px solid #5d6170;
+
+    .setting_item{
+      border-bottom: 1px solid #5d6170;
+      height: 44px;
+      line-height: 44px;
+      color: #5d6170;
+      width: 100%;
+      display: flex;
+      box-sizing: border-box;
+      padding:0 10px;
+      font-size: 14px;
+
+      i{
+        margin-top: 14px;
+        margin-right: 4px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .activated{
+      background-color: #aaa;
+      color: #fff;
+    }
+  }
+}

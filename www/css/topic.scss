@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/*话题：添加 修改*/
+.topic{
+
+  .article{
+    width: 100%;
+    float: left;
+    display: block;
+    margin-top: 30px;
+
+    .item{
+      width: 100%;
+      float: left;
+      display: flex;
+      line-height: 44px;
+      border-width: 0;
+
+      i{
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+
+      textarea{
+        margin-left: 10px;
+        flex: 1;
+        height: 80px;
+        resize: none;
+        font-size: 14px;
+        background-color: #f0ecec;
+        border-radius: 4px;
+      }
+    }
+
+    .assort{
+      font-size: 14px;
+
+      .assort_content{
+        flex: 1;
+        display: block;
+        height: auto;
+        margin-left: 10px;
+
+        .assort_title{
+          width: 100%;
+          float: left;
+          line-height: 20px;
+        }
+
+        .assort_btn{
+          float: left;
+          line-height: 30px;
+          border-radius: 4px;
+          padding: 0 10px;
+          box-sizing: border-box;
+          color: #c9cfd7;
+          background-color: #f1f3f6;
+          font-size: 14px;
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+
+        .active{
+          background-color: #007fff;
+          color: #ffffff;
+        }
+      }
+    }
+
+  }
+
+
+}

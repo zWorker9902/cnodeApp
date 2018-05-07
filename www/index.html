@@ -1,1 +1,85 @@
+<html ng-app="appMain">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;"/>
+	<!--离线应用的另一个技巧-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--隐藏状态栏-->
+	<meta name="apple-mobile-web-app-status-bar-style" content=black" />
+	<!--指定的iphone中safari顶端的状态条的样式-->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<!--告诉设备忽略将页面中的数字识别为电话号码-->
+	<meta content="telephone=no" name="format-detection" />
 
+	<title>CNodeJS 中文网</title>
+
+	<link rel="stylesheet" href="lib/ionic/css/ionic.min.css">
+	<link rel="stylesheet" href="lib/tabSlideBox/tabSlideBox.css">
+	<link rel="stylesheet" href="lib/ion-floating-menu/dist/ion-floating-menu.css">
+	<link rel="stylesheet" href="css/index.css" >
+
+	<script src="lib/ionic/js/ionic.bundle.min.js"></script>
+	<script src="lib/tabSlideBox/tabSlideBox.js"></script>
+	<script src="lib/ionic-image-lazy-load/ionic-image-lazy-load.js"></script>
+	<script src="lib/jquery/dist/jquery.js"></script>
+	<script src="lib/ngCordova/ng-cordova.js"></script>
+	<script src="lib/ion-floating-menu/dist/ion-floating-menu.js"></script>
+
+	<script src="cordova.js"></script>
+	<script src="cordova_plugins.js"></script>
+</head>
+<body ng-controller="appMainCtrl">
+<ng-include src=" 'views/menu.html' "></ng-include>
+
+<script id="views/tabs.html" type="text/ng-template">
+	<ion-tabs class="tabs-icon-top slide-left-right">
+		<ion-tab title="首页" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/home">
+			<ion-nav-view name="home-tab"></ion-nav-view>
+		</ion-tab>
+		<ion-tab title="发现" icon-off="ion-ios-eye-outline" icon-on="ion-ios-eye" href="#/tab/find">
+			<ion-nav-view name="find-tab"></ion-nav-view>
+		</ion-tab>
+		<ion-tab title="我" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/user">
+			<ion-nav-view name="user-tab"></ion-nav-view>
+		</ion-tab>
+	</ion-tabs>
+</script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/route.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/directive.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+
+<script id="modal.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-content class="share-modal" scroll="false">
+			<select>
+				<option ask>共享</option>
+				<option share>问答</option>
+				<option job>招聘</option>
+				<option dev>客户端专区</option>
+			</select>
+
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">标题</span>
+					<input type="text" ng-model="newTopic.title">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">内容</span>
+					<input type="text" ng-model="newTopic.content">
+				</label>
+			</div>
+			<div class="padding">
+				<button class="button button-block button-positive" ng-click="pushTopic(newTopic)">发表</button>
+			</div>
+
+		</ion-content>
+	</ion-modal-view>
+</script>
+
+</body>
+</html>

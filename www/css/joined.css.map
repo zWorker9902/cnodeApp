@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AACA,QAAQ;AACR,OAAQ;EACN,gBAAgB,EAAE,IAAI",
+"sources": ["joined.scss"],
+"names": [],
+"file": "joined.css"
+}

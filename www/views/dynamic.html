@@ -1,0 +1,83 @@
+<ion-view class="dynamic" view-title="zzz的专栏">
+
+    <ion-content scroll="false">
+        <tab-slide-box tab="0">
+            <div class="slidebox">
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll"
+                                    delegate-handle="tabSlider">
+                            <a href="javascript:;">创建</a>
+                            <a href="javascript:;">参与</a>
+                            <a href="javascript:;">收藏</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box show-pager="false"
+                               on-slide-changed="slideHasChanged($index)"
+                               delegate-handle="tabSlider">
+                    <ion-slide>
+                        <ng-include src=' "views/created.html" '></ng-include>
+                    </ion-slide>
+                    <ion-slide>
+                        <ng-include src=' "views/joined.html" '></ng-include>
+                    </ion-slide>
+                    <ion-slide>
+                        <ng-include src=' "views/collected.html" '></ng-include>
+                    </ion-slide>
+                </ion-slide-box>
+        </tab-slide-box>
+    </ion-content>
+</ion-view>
+
+
+
+<!--<ion-view title="收藏集" class="dynamic">-->
+    <!--<ion-content class="has-header" scroll="true" delegate-handle="dynamic">-->
+
+        <!--<div class="header">-->
+            <!--<a class="header_item"  ng-class="type==0 ? 'active' : null" ng-click="changeTab(0)">参与的</a>-->
+            <!--<a class="header_item"  ng-class="type==1 ? 'active' : null" ng-click="changeTab(1)">创建的</a>-->
+            <!--<a class="header_item " ng-class="type==2 ? 'active' : null" ng-click="changeTab(2)">收藏的</a>-->
+        <!--</div>-->
+
+        <!--<div ng-switch="type">-->
+            <!--<div ng-switch-when="0">-->
+                <!--<div class="list collect">-->
+                    <!--<a class="item item-avatar" ng-repeat="collect in collects" ui-sref="details({id: collect.id})">-->
+                        <!--<img ng-src="{{collect.author.avatar_url}}" onerror="this.src='img/error.jpg'">-->
+                        <!--<h2>{{collect.author.loginname}}</h2>-->
+                        <!--<p>{{collect.title}}</p>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div ng-switch-when="1">-->
+                <!--<div class="list topics">-->
+                    <!--&lt;!&ndash;<a class="topics_item" ng-repeat="topic in recent_topics" ui-sref="details({id: topic.id})">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="title">&ndash;&gt;-->
+                            <!--&lt;!&ndash;{{topic.title}}&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p>创建于 {{topic.last_reply_at}}</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+                    <!--<a class="item item-avatar" ng-repeat="topic in recent_topics" ui-sref="details({id: topic.id})">-->
+                        <!--<img ng-src="{{topic.author.avatar_url}}" onerror="this.src='img/error.jpg'">-->
+                        <!--<h2>{{topic.author.loginname}}</h2>-->
+                        <!--<p>{{topic.title}} - {{topic.last_reply_at}}</p>-->
+                    <!--</a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div ng-switch-when="2">-->
+                <!--<div class="list replies">-->
+                    <!--<a class="item item-avatar" ng-repeat="reply in recent_replies" ui-sref="details({id: topic.id})">-->
+                        <!--<img ng-src="{{reply.author.avatar_url}}" onerror="this.src='img/error.jpg'">-->
+                        <!--<h2>{{reply.author.loginname}}</h2>-->
+                        <!--<p>{{reply.title}} - {{reply.last_reply_at}}</p>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</ion-content>-->
+<!--</ion-view>-->

@@ -1,0 +1,32 @@
+<ion-modal-view class="login" hide-nav-bar="true" ng-controller="loginCtrl">
+    <embed src="image/cnodejs_light.svg"/>
+
+    <form ng-submit="save(dataForm);">
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon ion-person placeholder-icon"></i>
+                <input type="text" placeholder="账号" ng-model="login.name">
+            </label>
+
+            <label class="item item-input">
+                <i class="icon ion-locked placeholder-icon"></i>
+                <input type="password" placeholder="密码" ng-model="login.pswd">
+            </label>
+
+            <button class="button button-block button-positive">登录</button>
+
+            <div class="row">
+                <a style="float:left" ng-click="onForget()">忘记密码</a>
+                <a style="float:right"  ng-click="onRegister()">用户注册</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="scanner" ng-click="onScanner()">
+        <i class="icon-scanner"></i>
+        <span>扫码登录</span>
+    </div>
+
+    <button class="button button-clear icon ion-close-circled" ng-click="closeLogin()"></button>
+
+</ion-modal-view>

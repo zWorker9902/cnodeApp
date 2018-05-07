@@ -1,0 +1,43 @@
+<ion-view title="个人中心" class="author">
+    <ion-nav-buttons side="left">
+        <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header">
+        <div class="header">
+            <a href="#">
+                <img image-lazy-src="{{user.avatar_url}}"  class="dfimg2">
+            </a>
+
+            <span class="name">{{user.loginname}}</span>
+
+            <div class="row info">
+                <div class="info_item">
+                    积分:<span>32</span>
+                </div>
+
+                <div class="info_item">
+                    注册时间:<span>一个月前</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="list">
+            <a class="item" ui-sref="dynamic({type: 0})">
+                参与
+                <span class="item-note">{{user.recent_replies.length}}</span>
+            </a>
+            <a class="item" ui-sref="dynamic({type: 1})">
+                创建
+                <span class="item-note">{{user.recent_topics.length}}</span>
+            </a>
+            <a class="item" ui-sref="dynamic({type: 2})">
+                收藏
+                <span class="item-note">{{collects.length}}</span>
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>

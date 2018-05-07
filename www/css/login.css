@@ -1,0 +1,86 @@
+.login {
+  background-color: #f7f7f7;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center; }
+  .login .logo {
+    width: 184px;
+    height: 84px;
+    border: 1px solid red;
+    margin: 30px auto; }
+    .login .logo img {
+      width: 100%;
+      height: 100%; }
+  .login .form {
+    margin: 0 auto;
+    border: 1px solid red;
+    width: 270px; }
+    .login .form .form_input {
+      width: 100%;
+      height: 42px;
+      border-radius: 4px;
+      border: 1px solid #626262;
+      display: flex;
+      align-content: center;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      padding: 0 4px; }
+      .login .form .form_input i {
+        width: 18px;
+        height: 18px;
+        margin: 12px 6px; }
+      .login .form .form_input input {
+        flex: 1;
+        font-size: 16px;
+        margin: auto 0; }
+    .login .form .form_btn, .login .form .form_row {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      font-size: 16px; }
+    .login .form .form_btn {
+      align-content: center;
+      justify-content: center;
+      color: #ffffff;
+      background-color: #909090; }
+    .login .form .form_btn.activated {
+      background-color: #725959; }
+    .login .form .form_row {
+      align-content: center;
+      justify-content: space-between;
+      color: #828282;
+      font-size: 12px;
+      background-color: transparent;
+      height: 24px;
+      line-height: 24px; }
+      .login .form .form_row .activated {
+        color: #ccc; }
+  .login .scanner {
+    border: 1px solid red;
+    width: 100px;
+    height: 54px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    font-size: 14px; }
+    .login .scanner i {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto; }
+    .login .scanner span {
+      text-align: center; }
+  .login .other_login {
+    border: 1px solid red;
+    width: 60px;
+    height: 60px;
+    margin: 20px auto; }
+
+/*# sourceMappingURL=login.css.map */

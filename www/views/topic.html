@@ -1,0 +1,40 @@
+<ion-view title="分享文章" class="topic" cache-view="false">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="onPublish()">发布</button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header" scroll="true" scroll-top delegate-handle="topicHandle">
+
+        <div class="list article">
+            <div class="item">
+                <i class="icon-title"></i>
+                <textarea placeholder="标题" style="height: 24px;" ng-model="topic.title"></textarea>
+            </div>
+            <div class="item">
+                <i class="icon-content"></i>
+                <textarea placeholder="此刻你的想法..." style="height: 80px;" ng-model="topic.content"></textarea>
+            </div>
+            <div class="item assort">
+                <i class="icon-assort"></i>
+                <div class="assort_content">
+                    <span class="assort_title">选择分类</span>
+                    <!--<a class="assort_btn" ng-class="tab== 'good' ? 'active' : null" ng-click="changeTab(0)">-->
+                        <!--<span>精华</span>-->
+                    <!--</a>-->
+                    <a class="assort_btn" ng-class="topic.tab == 'ask' ? 'active' : null" ng-click="onSetTab('ask')">
+                        <span>问答</span>
+                    </a>
+                    <a class="assort_btn" ng-class="topic.tab == 'share' ? 'active' : null" ng-click="onSetTab('share')">
+                        <span>分享</span>
+                    </a>
+                    <a class="assort_btn" ng-class="topic.tab == 'job' ? 'active' : null" ng-click="onSetTab('job')">
+                        <span>招聘</span>
+                    </a>
+                    <a class="assort_btn" ng-class="topic.tab == 'dev' ? 'active' : null" ng-click="onSetTab('dev')">
+                        <span>Dev专区</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

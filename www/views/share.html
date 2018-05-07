@@ -1,0 +1,56 @@
+<ion-view class="login" view-title="分享"  hide-nav-bar="true" cache-view="false">
+    <ion-content class="goods" ng-controller="shareCtrl">
+        <ion-refresher
+                pulling-text="下拉"
+                refreshing-text="刷新中..."
+                on-refresh="getRefresh()">
+        </ion-refresher>
+
+        <!--热门新闻-->
+        <div class="item item-divider">
+            <i class="icon-share"></i>
+            <span class="tips">分享</span>
+        </div>
+
+        <ion-spinner icon="dots" class="spinner-dark" ng-if="topics.length<1"></ion-spinner>
+
+        <div class="good">
+            <div class="good_item" ng-repeat="topic in  topics | limitTo: 20">
+                <a t1 s1 ui-sref="details({id: topic.id})">
+                    <div class="row header">
+                        <img ng-src="{{topic.author.avatar_url}}"  onerror="this.src='img/error.jpg'"  ui-sref="user({name: topic.author.loginname})">
+                        <span class="name">{{topic.author.loginname}}</span>
+                        <div class="type">
+                            <i class="i_share">分享</i>
+                        </div>
+                    </div>
+
+                    <div class="title">
+                        {{topic.title}}
+                    </div>
+                    <div class="content" ng-bind-html="topic.content"></div>
+                    <div class="row footer">
+                        <div class="tips">
+                            <i class="icon-discuss"></i>
+                            {{topic.reply_count}}
+                        </div>
+                        <div class="tips">
+                            <i class="icon-views"></i>
+                            {{topic.visit_count}}
+                        </div>
+                        <div class="publish">
+                            2018-4-23
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+
+
+    </ion-content>
+</ion-view>

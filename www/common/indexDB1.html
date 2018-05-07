@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HTML 5 Application - IndexedDb</title>
+  <script type="text/javascript">
+
+//    https://blog.csdn.net/a214161398a/article/details/50130343
+
+    var blockbusters={
+      title:"nishi",
+      derector:"shi",
+      length:120
+    };//假设这个object用来保存的
+
+    var db;
+    var request;
+    var store;
+
+    function createDatabase(dbName){
+      request = indexedDB.open(dbName, 3);
+      request.onerror = function () {
+        alert("fail to open datbase with:"+event.target.message);
+      }
+      request.onsuccess = function (event) {
+        db = event.target.result;
+
+        // 打开一个事务，blockbusters object store，可读可写
+        var transaction = db.transaction(["blockbusters"], "readwrite");
+        var objectStore = transaction.objectStore("blockbusters"); // 获取 blockbusters
+        objectStore.add(blockbusters); // 添加数据
+        objectStore.add({
+          title:"张三",
+          derector:"本科",
+          length:120
+        }); // 添加数据
+        objectStore.add({
+          title:"李四",
+          derector:"博士",
+          length:120
+        }); // 添加数据
+
+      }
+      request.onupgradeneeded = function(event) {
+        alert("version Change");
+        db = event.target.result;
+        // 创建数据库，初始化 object  store blockbusters
+        store = db.createObjectStore("blockbusters", {keyPath: "title",autoIncrement: false});
+      }
+    }
+
+    function deletedatabase(dbName){
+      try{
+        indexedDB.deleteDatabase(dbName);
+      }catch(e){
+        alert(e.getMessage);
+      }
+    }
+  </script>
+</head>
+<body>
+<button onclick="createDatabase('Test')">Create Database</button>
+<button onclick="deletedatabase('Test')">delet Database</button>
+
+</body>
+</html>

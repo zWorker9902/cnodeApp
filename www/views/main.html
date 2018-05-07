@@ -1,0 +1,125 @@
+
+<ion-content class="has-footer main" ng-controller="mainCtrl">
+    <ion-refresher
+            pulling-text="下拉更新"
+            refreshing-text="更新中..."
+            on-refresh="onRefresh()">
+    </ion-refresher>
+
+    <!--图片轮播-->
+    <div class="rotate">
+        <ion-slide-box delegate-handle="imgSlider"
+                       does-continue="true"
+                       auto-play="true"
+                       slide-interval="3000"
+                       ng-if="advList">
+
+            <ion-slide ng-repeat="adv in advList">
+                <div>
+                    <img ng-src="{{::adv.img}}" width="{{::width}}" height="{{::height}}" class="dfimg2"/></div>
+            </ion-slide>
+
+        </ion-slide-box>
+    </div>
+
+    <!--热门新闻-->
+    <div class="item item-divider fir">
+        <div style="float:left;">
+            <b class="blue"></b>
+            <strong>热门新闻</strong>
+        </div>
+        <div style="float:right;">
+            <a class="button button-clear" ng-click="more(1)">更多
+                <i></i>
+            </a>
+        </div>
+    </div>
+
+    <!--热门推荐-->
+    <div class="newsList topic">
+        <div class="topic_item" ng-repeat="topic in  topicsList | limitTo: 20">
+            <a ui-sref="details({id: topic.id})">
+                <div class="row header">
+                    <img image-lazy-src="{{topic.author.avatar_url}}"  class="dfimg1" onerror="this.src='image/user.png'">
+                    <span class="name">{{topic.author.loginname}}</span>
+                    <div class="type" ng-if="topic.top">
+                        <i class="i_top">置顶</i>
+                    </div>
+                    <div class="type" ng-if="topic.good">
+                        <i class="i_good">精华</i>
+                    </div>
+                    <div class="type" ng-if="!topic.top && !topic.good" ng-switch="topic.tab">
+                        <i class="i_share" ng-switch-when="share">分享</i>
+                        <i class="i_ask"   ng-switch-when="ask">问答</i>
+                        <i class="i_job"   ng-switch-when="job">招聘</i>
+                    </div>
+                </div>
+
+                <div class="title">
+                    {{topic.title}}
+                </div>
+                <div class="content" ng-bind-html="topic.content | imgClearFilter"></div>
+                <div class="row footer">
+                    <div class="tips">
+                        <i class="icon-discuss"></i>
+                        {{topic.reply_count}}
+                    </div>
+                    <div class="tips">
+                        <i class="icon-views"></i>
+                        {{topic.visit_count}}
+                    </div>
+                    <div class="publish">
+                        2018-4-23
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="item item-divider fir">
+        <div style="float:left;">
+            <b class="green"></b>
+            <strong>行业热门</strong>
+        </div>
+        <div style="float:right;">
+            <a class="button button-clear" ng-click="more(1)">更多
+                <i></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="industry">
+        <div class="hot1" style="float: left">
+            <p class="title"></p>
+            <p class="introduce"></p>
+        </div>
+        <div class="hot2" style="float: right">
+            <p class="title"></p>
+            <p class="introduce"></p>
+        </div>
+        <div class="hot3" style="float: left">
+            <p class="title"></p>
+            <p class="introduce"></p>
+        </div>
+        <div class="hot3" style="float: right">
+            <p class="title"></p>
+            <p class="introduce"></p>
+        </div>
+    </div>
+
+
+    <!--热门视频-->
+    <div class="item item-divider fir">
+        <div style="float:left;">
+            <b class="green"></b>
+            <strong>热门视频</strong>
+        </div>
+        <div style="float:right;">
+            <a class="button button-clear" ng-click="more(1)">更多
+                <i></i>
+            </a>
+        </div>
+    </div>
+
+
+</ion-content>

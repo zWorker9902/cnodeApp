@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+@import "home";
+@import "details";
+@import "author";
+@import "dynamic";
+@import "topic";
+@import "topics";
+@import "good";
+@import "ask";
+@import "share";
+@import "job";
+@import "setting";
+@import "login";
+@import "user";
+@import "icon";
+@import "main";
+
+body{
+  background:#f4f4f4;
+  position: fixed;
+}
+body,.ionic-body{
+  font-family: 微软雅黑, Arial, Helvetica, sans-serif;
+}
+.visible{
+  visibility: visible;
+}
+
+.disable-user-behavior{
+  background:#069cc4;
+  width:100%;
+  overflow:hidden;
+
+  .button{
+    color: #fff;
+  }
+
+  .title{
+    color: #fff;
+  }
+}
+
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
+  border-color: #666;
+  background-color: #F7F7F7;
+}

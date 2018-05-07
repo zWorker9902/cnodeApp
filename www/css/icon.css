@@ -1,0 +1,17 @@
+.icon-zan {
+  background-image: url("img/zan.png");
+  background-size: cover; }
+
+.icon-share {
+  background-image: url("img/share.png");
+  background-size: cover; }
+
+.icon-views {
+  background-image: url("img/view.png");
+  background-size: cover; }
+
+.icon-discuss {
+  background-image: url("img/discuss.png");
+  background-size: cover; }
+
+/*# sourceMappingURL=icon.css.map */

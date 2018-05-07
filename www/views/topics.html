@@ -1,0 +1,82 @@
+
+<ion-content class="has-footer topics" ng-controller="topicsCtrl">
+    <ion-refresher
+            pulling-text="下拉更新"
+            refreshing-text="更新中..."
+            on-refresh="onRefresh()">
+    </ion-refresher>
+
+    <div class="row func">
+        <a class="col f_item" ui-sref="good">
+            <i class="icon-bg-good"></i>
+            <span>精华</span>
+        </a>
+        <a class="col f_item" ui-sref="share">
+            <i class="icon-bg-share"></i>
+            <span>分享</span>
+        </a>
+        <a class="col f_item" ui-sref="ask">
+            <i class="icon-bg-ask"></i>
+            <span>问答</span>
+        </a>
+        <a class="col f_item" ui-sref="job">
+            <i class="icon-bg-job"></i>
+            <span>招聘</span>
+        </a>
+    </div>
+
+    <!--热门新闻-->
+    <div class="item item-divider" ng-if="true">
+        <i class="icon-hot"></i>
+        <span class="tips">热门话题</span>
+    </div>
+
+    <ion-spinner icon="dots" class="spinner-dark" ng-if="topicsList.length<1"></ion-spinner>
+
+    <div class="topic" ng-cloak>
+        <div class="topic_item" ng-repeat="topic in  topicsList | limitTo: 20">
+            <a ui-sref="details({id: topic.id})">
+                <div class="row header">
+                    <img image-lazy-src="{{topic.author.avatar_url}}"  class="dfimg1" onerror="this.src='image/user.png'">
+                    <span class="name">{{topic.author.loginname}}</span>
+                    <div class="type" ng-if="topic.top">
+                        <i class="i_top">置顶</i>
+                    </div>
+                    <div class="type" ng-if="topic.good">
+                        <i class="i_good">精华</i>
+                    </div>
+                    <div class="type" ng-if="!topic.top && !topic.good" ng-switch="topic.tab">
+                        <i class="i_share" ng-switch-when="share">分享</i>
+                        <i class="i_ask"   ng-switch-when="ask">问答</i>
+                        <i class="i_job"   ng-switch-when="job">招聘</i>
+                    </div>
+                </div>
+
+                <div class="title">
+                    {{topic.title}}
+                </div>
+                <div class="content" ng-bind-html="topic.content | imgClearFilter"></div>
+                <div class="row footer">
+                    <div class="tips">
+                        <i class="icon-discuss"></i>
+                        {{topic.reply_count}}
+                    </div>
+                    <div class="tips">
+                        <i class="icon-views"></i>
+                        {{topic.visit_count}}
+                    </div>
+                    <div class="publish">
+                        2018-4-23
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!--<ion-infinite-scroll-->
+    <!--on-infinite="loadMore()"-->
+    <!--distance="1%">-->
+    <!--</ion-infinite-scroll>-->
+
+
+</ion-content>

@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* 动态 */
+.dynamic{
+  background-color: #fff;
+
+  .header{
+    height: 44px;
+    background-color: #069cc4;
+    color: #fff;
+
+    .header_item{
+      width: 78px;
+      display: inline-block;
+      text-align: center;
+      font-size: 16px;
+      line-height: 42px;
+      box-sizing: border-box;
+      border-bottom: 2px solid transparent;
+    }
+
+    .active{
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  //最近话题
+  .topics{
+    border: 1px solid green;
+
+    .topics_item{
+      display: block;
+      float: left;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 10px;
+      border-bottom: 1px solid #ccc;
+
+      .title{
+        display: block;
+        float: left;
+        width: 100%;
+        line-height: 22px;
+        color: #5a5a5b;
+        font-size: 15px;
+        margin: 4px 0;
+      }
+
+      p{
+        display: block;
+        float: left;
+        width: 100%;
+        line-height: 22px;
+        color: #94a2b0;
+        font-size: 13px;
+        padding: 0 2px;
+      }
+    }
+  }
+
+}
