@@ -90,14 +90,9 @@ angular.module('appMain.services', [])
                 limit: 5,
                 mdrender: true,
             },
-            accesstoken: 'bfa787f1-09cc-42d6-90e4-d4c0616d24b4',
             author:{
                 accesstoken: 'bfa787f1-09cc-42d6-90e4-d4c0616d24b4', /* 用户token */
                 login: false, /* 用户是否登录 */
-            },
-            setting:{
-                noImage: false, /* 是否开启无图模式 */
-                isWarn: false, /* 是否开启提醒 */
             },
             netstate: null,  /* 网络状态 */
             tabs: [
@@ -112,7 +107,7 @@ angular.module('appMain.services', [])
             usercollect: 'https://cnodejs.org/api/v1/topic_collect/',// 用户收藏
             replies: 'https://cnodejs.org/api/v1/topic/:topic_id/replies', // 用户评论
             replyups: 'https://cnodejs.org/api/v1/reply/:reply_id/ups',// 为评论点赞
-            assesstoken: 'https://cnodejs.org/api/v1/accesstoken',// token验证
+            checktoken: 'https://cnodejs.org/api/v1/accesstoken',// token验证
             messagecount: 'https://cnodejs.org/api/v1/message/count',// 获取未读消息数
             message: 'https://cnodejs.org/api/v1/messages',// 获取已读和未读消息
             markall: 'https://cnodejs.org/api/v1/message/mark_all',// 标记全部已读
@@ -145,8 +140,8 @@ angular.module('appMain.services', [])
                 var params = {
                     mdrender: rootStr.param.mdrender,
                 };
-                if(rootStr.accesstoken){
-                    params.accesstoken = rootStr.accesstoken;
+                if(rootStr.author.accesstoken){
+                    params.accesstoken = rootStr.author.accesstoken;
                 }
                 var defered = $q.defer();
                 return $http.get(
@@ -167,7 +162,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.topics,
                     {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         title: title,
                         tab: tab,
                         content: content
@@ -185,7 +180,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.topics,
                     {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         topic_id: topic_id,
                         title: title,
                         tab: tab,
@@ -222,10 +217,10 @@ angular.module('appMain.services', [])
             /* 用户Token验证 */
             tokenCheck: function(accessToken){
                 var defered = $q.defer();
-                rootStr.assesstoken = accessToken;
-                return $http.post(rootStr.assesstoken,
+                rootStr.author.assesstoken = accessToken;
+                return $http.post(rootStr.checktoken,
                     {
-                        accesstoken: rootStr.accesstoken
+                        accesstoken: rootStr.author.accesstoken
                     })
                     .success(function(response) {
                         defered.resolve(response);
@@ -256,7 +251,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.collect,
                     {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         topic_id: topic_id
                     })
                     .success(function(response) {
@@ -271,7 +266,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.uncollect,
                     {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         topic_id: topic_id
                     })
                     .success(function(response) {
@@ -290,14 +285,14 @@ angular.module('appMain.services', [])
                 var param = null;
                 if(reply_id){
                     param = {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         content: content,
                         reply_id: reply_id
                     }
                 }
                 else{
                     param = {
-                        accesstoken: rootStr.accesstoken,
+                        accesstoken: rootStr.author.accesstoken,
                         content: content
                     }
                 }
@@ -315,7 +310,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.replyups.replace(/:reply_id/, reply_id),
                     {
-                        accesstoken: rootStr.accesstoken
+                        accesstoken: rootStr.author.accesstoken
                     }
                 )
                     .success(function(response) {
@@ -335,7 +330,7 @@ angular.module('appMain.services', [])
                 return $http.get(rootStr.messagecount,
                     {
                         params:{
-                            accesstoken: rootStr.accesstoken
+                            accesstoken: rootStr.author.accesstoken
                         }
                     }
                 ).success(function(response) {
@@ -351,7 +346,7 @@ angular.module('appMain.services', [])
                 return $http.get(rootStr.message,
                     {
                         params:{
-                            accesstoken: rootStr.accesstoken,
+                            accesstoken: rootStr.author.accesstoken,
                             mdrender: rootStr.param.mdrender
                         }
                     }
@@ -367,7 +362,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.markall,
                     {
-                        accesstoken: rootStr.accesstoken
+                        accesstoken: rootStr.author.accesstoken
                     }
                 ).success(function(response) {
                     defered.resolve(response);
@@ -381,7 +376,7 @@ angular.module('appMain.services', [])
                 var defered = $q.defer();
                 return $http.post(rootStr.markone.replace(/:msg_id/, msg_id),
                     {
-                        accesstoken: rootStr.accesstoken
+                        accesstoken: rootStr.author.accesstoken
                     }
                 ).success(function(response) {
                     defered.resolve(response);

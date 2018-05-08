@@ -46,7 +46,7 @@
             <li class="item item-toggle">
                 开启最新提示
                 <label class="toggle toggle-positive">
-                    <input type="checkbox" checked="">
+                    <input type="checkbox" ng-model="avatar.enabled" ng-change="setAvatar()">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
@@ -54,8 +54,8 @@
             </li>
             <li class="item item-toggle">
                 无图模式
-                <label class="toggle toggle-calm">
-                    <input type="checkbox" checked="">
+                <label class="toggle toggle-calm"  ng-model="setting.avatar.enabled" ng-change="settingAvatar()">
+                    <input type="checkbox">
                     <div class="track">
                         <div class="handle"></div>
                     </div>

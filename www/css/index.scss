@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+@import "base";
 @import "home";
 @import "details";
 @import "author";
@@ -15,10 +16,11 @@
 @import "user";
 @import "icon";
 @import "main";
+@import "find";
 
 body{
   background:#f4f4f4;
-  position: fixed;
+  position: relative;
 }
 body,.ionic-body{
   font-family: 微软雅黑, Arial, Helvetica, sans-serif;
@@ -49,4 +51,40 @@ body,.ionic-body{
 .item .item-content.activated {
   border-color: #666;
   background-color: #F7F7F7;
+}
+.dfcontent{
+  background-size:100%;
+  background:url(../image/gif/content.gif) no-repeat;
+  background-repeat:round;
+}
+.dfitem{
+  background-size:100%;
+  background:url(../image/gif/item.gif) no-repeat;
+  background-repeat:round;
+}
+.dfuser{
+  background-size:100%;
+  background:url(../image/default_user.png) no-repeat;
+  background-repeat:round;
+}
+
+.popDialog{
+  //display: none;
+  border: 1px solid red;
+  border-radius: 4px;
+  background-color: #ccc;
+  width: auto;
+  max-width: 80%;
+  margin: 0 auto;
+  height: auto;
+  position: absolute;
+  left:0; right:0;
+  bottom:64px;
+  z-index: 100;
+  text-align: center;
+  visibility: hidden;
+}
+
+.visible{
+  visibility: visible;
 }

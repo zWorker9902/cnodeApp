@@ -1,14 +1,12 @@
-angular.module('appMain', [
+angular.module('app', [
     'ionic',
     'ngCordova',
     'tabSlideBox',
-    'ionicLazyLoad',
-    'appMain.route',
+    'app.route',
     'appMain.filter',
     'appMain.services',
     'appMain.directive',
-    'appMain.controllers',
-    'ion-floating-menu'
+    'appMain.controllers'
 ])
     .config([
         '$ionicConfigProvider', // 配置视图过渡方式
@@ -19,8 +17,7 @@ angular.module('appMain', [
             $ionicConfigProvider,
             $compileProvider,
             $sceDelegateProvider,
-            $stateProvider,
-            $ionicNativeTransitionsProvider){
+            $stateProvider){
             // 配置选项卡的样式。 Android默认为striped，iOS默认为standard
             $ionicConfigProvider.tabs.style("standard");
 
@@ -64,7 +61,7 @@ angular.module('appMain', [
             $sceDelegateProvider.resourceUrlBlacklist([
                 'http://myapp.example.com/clickThru**'
             ]);
-            
+
         }])
     .run([
         '$ionicPlatform', // 检测当前的平台
@@ -122,35 +119,35 @@ angular.module('appMain', [
 
                 // 软件版本检测
                 $rootScope.versionName = null;//定义版本号
-                $http.get(rootStr.lunar).success(function(data){
-                    cordova.getAppVersion.getVersionNumber().then(
-                        function (version) {
-                            if (rootStr.netState === Connection.WIFI) {
-                                $ionicPopup.confirm({
-                                    title: '版本升级',
-                                    template: '发现新版本',
-                                    cancelText: '取消',
-                                    okText: '升级'
-                                }).then(function (res) {
-                                    if (res) {
-                                        // 版本升级
-                                    }
-                                });
-                            } else {
-                                $ionicPopup.confirm({
-                                    title: '建议您在WIFI条件下进行升级，是否确认升级？',
-                                    template: '发现新版本',
-                                    cancelText: '取消',
-                                    okText: '升级'
-                                }).then(function (res) {
-                                    if (res) {
-                                        // 版本升级
-                                    }
-                                });
-                            }
-                        }
-                    );
-                });
+                // $http.get(rootStr.lunar).success(function(data){
+                //     cordova.getAppVersion.getVersionNumber().then(
+                //         function (version) {
+                //             if (rootStr.netState === Connection.WIFI) {
+                //                 $ionicPopup.confirm({
+                //                     title: '版本升级',
+                //                     template: '发现新版本',
+                //                     cancelText: '取消',
+                //                     okText: '升级'
+                //                 }).then(function (res) {
+                //                     if (res) {
+                //                         // 版本升级
+                //                     }
+                //                 });
+                //             } else {
+                //                 $ionicPopup.confirm({
+                //                     title: '建议您在WIFI条件下进行升级，是否确认升级？',
+                //                     template: '发现新版本',
+                //                     cancelText: '取消',
+                //                     okText: '升级'
+                //                 }).then(function (res) {
+                //                     if (res) {
+                //                         // 版本升级
+                //                     }
+                //                 });
+                //             }
+                //         }
+                //     );
+                // });
 
                 /* 显示加载框 */
                 $rootScope.showLoad = function(){
@@ -166,11 +163,11 @@ angular.module('appMain', [
                 var needLoginView = ["myclass", "mycomment", "myfavorite", "myquestion", "orderlist"];//需要登录的页面state
                 $rootScope.$on('$stateChangeStart',
                     function(event, toState, toParams, fromState, fromParams, options){
-                    if(needLoginView.indexOf(toState.name) >=0 && !$rootScope.isLogin ){//判断当前是否登录
-                        $state.go("login");//跳转到登录页
-                        event.preventDefault(); //阻止默认事件，即原本页面的加载
-                    }
-                });
+                        if(needLoginView.indexOf(toState.name) >=0 && !$rootScope.isLogin ){//判断当前是否登录
+                            $state.go("login");//跳转到登录页
+                            event.preventDefault(); //阻止默认事件，即原本页面的加载
+                        }
+                    });
 
                 // 状态栏配置
                 $timeout(function(){
@@ -201,35 +198,35 @@ angular.module('appMain', [
             });
 
             $ionicPlatform.registerBackButtonAction(function(e) {
-                    if ($state.current.name.indexOf("home") > -1) {
-                        if ($rootScope.backButtonPressedOnceToExit) {
-                            // 保存配置信息
-                            LocalSer.setLocal('setting', rootStr.setting);
-                            LocalSer.getLocal('author', rootStr.author);
+                if ($state.current.name.indexOf("home") > -1) {
+                    if ($rootScope.backButtonPressedOnceToExit) {
+                        // 保存配置信息
+                        LocalSer.setLocal('setting', rootStr.setting);
+                        LocalSer.getLocal('author', rootStr.author);
 
-                            ionic.Platform.exitApp();
+                        ionic.Platform.exitApp();
+                    } else {
+                        $rootScope.backButtonPressedOnceToExit = !0;
+                        $cordovaToast.showShortBottom("再按一次退出CNodeJS中文网");
+                        console.log("$state.current.name" + $state.current.name);
+
+                        setTimeout(function () {
+                            $rootScope.backButtonPressedOnceToExit = !1
+                        }, 1000);
+                    }
+                } else {
+                    if ($ionicHistory.backView()) {
+                        $rootScope.isBack = !0;
+                        if ($cordovaKeyboard.isVisible()) {
+                            $cordovaKeyboard.close()
                         } else {
-                            $rootScope.backButtonPressedOnceToExit = !0;
-                            $cordovaToast.showShortBottom("再按一次退出CNodeJS中文网");
-                            console.log("$state.current.name" + $state.current.name);
-
-                            setTimeout(function () {
-                                $rootScope.backButtonPressedOnceToExit = !1
-                            }, 1000);
+                            $ionicHistory.goBack();
                         }
                     } else {
-                        if ($ionicHistory.backView()) {
-                            $rootScope.isBack = !0;
-                            if ($cordovaKeyboard.isVisible()) {
-                                $cordovaKeyboard.close()
-                            } else {
-                                $ionicHistory.goBack();
-                            }
-                        } else {
-                            console.log("返回异常");
-                            $state.go("home");
-                            e.preventDefault()
-                        }
+                        console.log("返回异常");
+                        $state.go("home");
+                        e.preventDefault()
                     }
-                }, 1000);
+                }
+            }, 1000);
         }]);

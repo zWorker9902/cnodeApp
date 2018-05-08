@@ -1,4 +1,3 @@
-
 <ion-content class="has-footer main" ng-controller="mainCtrl">
     <ion-refresher
             pulling-text="下拉更新"
@@ -37,10 +36,20 @@
 
     <!--热门推荐-->
     <div class="newsList topic">
+
+        <a class="item item-avatar" ng-repeat="topic in topicsList track by $index" href="#/app/topic/{{ topic.id }}" ng-if="false">
+            <img ng-src="{{ topic.author.avatar_url}}" onerror="this.src='image/default_user.png'">
+            <h2 ng-bind="topic.title"></h2>
+            <p>
+                <span class="tab"></span>
+                <em ng-bind="topic.last_reply_at | dateFilter"></em>
+            </p>
+        </a>
+
         <div class="topic_item" ng-repeat="topic in  topicsList | limitTo: 20">
             <a ui-sref="details({id: topic.id})">
                 <div class="row header">
-                    <img image-lazy-src="{{topic.author.avatar_url}}"  class="dfimg1" onerror="this.src='image/user.png'">
+                    <img ng-src="{{topic.author.avatar_url}}"  onerror="this.src='image/default_user.png'">
                     <span class="name">{{topic.author.loginname}}</span>
                     <div class="type" ng-if="topic.top">
                         <i class="i_top">置顶</i>
@@ -69,7 +78,7 @@
                         {{topic.visit_count}}
                     </div>
                     <div class="publish">
-                        2018-4-23
+                        {{topic.create_at | dateFilter}}
                     </div>
                 </div>
             </a>

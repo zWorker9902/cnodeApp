@@ -1,7 +1,6 @@
 // 总路由模块
-angular.module('appMain.route', [])
+angular.module('app.route', [])
     .config(function($stateProvider, $urlRouterProvider) {
-
         $stateProvider
             .state("tabs", {
                 url: "/tab",
@@ -11,7 +10,8 @@ angular.module('appMain.route', [])
                         templateUrl: "views/tabs.html"
                     },
                     "setting": {
-                        templateUrl: "views/setting.html"
+                        templateUrl: "views/setting.html",
+                        controller: 'settingCtrl'
                     }
                 }
             })
@@ -33,10 +33,11 @@ angular.module('appMain.route', [])
                 }
             })
             .state("tabs.user", {
-                url: "/user",
+                url: "/user?name",
                 views: {
                     "user-tab": {
-                        templateUrl: "views/user.html"
+                        templateUrl: "views/user.html",
+                        controller: 'userCtrl'
                     }
                 }
             })
@@ -77,18 +78,12 @@ angular.module('appMain.route', [])
                 templateUrl: "views/author.html",
                 controller: 'authorCtrl'
             })
-            .state("dynamic", {
-                url: "/dynamic?type",
-                cache: true,//缓存配置2
-                templateUrl: "views/dynamic.html",
-                controller: 'dynamicCtrl'
+            .state("login", {
+                url: "/login",
+                cache: false,
+                templateUrl: "views/login.html",
+                controller: 'loginCtrl'
             })
-            // .state("login", {
-            //     url: "/login",
-            //     cache: false,
-            //     templateUrl: "views/login.html",
-            //     controller: 'loginCtrl'
-            // })
             .state("topic", {
                 url: "/topic?id",
                 templateUrl: "views/topic.html",

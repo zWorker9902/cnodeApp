@@ -4,16 +4,12 @@
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <a class="button button-icon icon" ng-class="{true:'ion-android-star',false:'ion-android-star-outline'}[collect]" ng-click="onCollect()"></a>
+        <a class="button button-icon icon" ng-class="{true:'ion-android-star',false:'ion-android-star-outline'}[collect]" ng-click="onCollect(article.id)"></a>
     </ion-nav-buttons>
 
-    <!--<ion-floating-menu has-footer="true" button-color="#ccc" icon="ion-plus" iconColor="#fff">-->
-    <!--<ion-floating-item icon="ion-camera" click="myEvent()"></ion-floating-item>-->
-    <!--<ion-floating-item icon="ion-person" click="myEvent()"></ion-floating-item>-->
-    <!--</ion-floating-menu>-->
+    <ion-content class="has-header has-footer" scroll-top delegate-handle="detailsHandle">
 
-    <ion-content class="has-header has-footer">
-        <div class="title">
+        <div class="title" ng-if="article">
             <dl>
                 <dt>{{article.title}}</dt>
                 <dt class="source">
@@ -22,14 +18,14 @@
                 </dt>
 
                 <dt class="info">
-                    <img src="{{article.author.avatar_url | imgFormatFilter}}" ng-click="onUser(article.author.loginname)">
+                    <img ng-src="{{article.author.avatar_url}}" onerror="this.src='image/default_user.png'" class="dfuser" ng-click="onAuthor(article.author.loginname)">
                     <span class="date">{{article.create_at | dateFilter}}</span>
                     <span class="views">浏览{{article.visit_count}}次</span>
                 </dt>
             </dl>
         </div>
 
-        <div class="introduction" ng-bind-html="article.content | imgFormatFilter"></div>
+        <div class="introduction" ng-bind-html="article.content | conImgFilter" ng-if="article">></div>
 
         <div class="share-popu">
             <div class="staret">&nbsp;&nbsp;我要分享 &nbsp;&nbsp;</div>
@@ -43,23 +39,23 @@
                     <button class="button action-sheet-option ng-binding" ng-click="share(4)"><img src="image/qzone.png" height="40px"><span>QQ空间</span></button>
                 </div>
             </div>
-
         </div>
 
-        <div class="item item-divider" id="pldiv">
+        <div class="item item-divider">
             <i class="item item-icon-left">
-                <i class="icon ion-edit"></i>热门评论 </i>
+                <i class="icon ion-edit"></i>热门评论
+            </i>
         </div>
-        <div class="replies">
+        <div class="replies" ng-if="article">
             <div class="reply_item" ng-repeat="reply in article.replies">
                 <a>
-                    <img ng-src="{{reply.author.avatar_url}}" onerror="this.src='img/usr.png'" ng-click="onUser(reply.author.loginname)">
+                    <img ng-src="{{reply.author.avatar_url}}" onerror="this.src='image/default_user.png'" class="dfuser" ng-click="onAuthor(reply.author.loginname)">
                     <div class="reply">
                         <div class="name">{{reply.author.loginname}}</div>
-                        <div class="content" ng-bind-html="reply.content | imgFormatFilter"></div>
+                        <div class="content" ng-bind-html="reply.content | conImgFilter"></div>
                         <div class="time">
                             <span>{{$index + 1}}楼</span> ●
-                            <span>2018-11-23</span>
+                            <span>{{reply.create_at | dateFilter}}</span>
                             <!--{{reply.create_at}}-->
                             <!--<div class="point">-->
                             <!--<i class="icon-views"></i>{{reply.create_at}}-->
@@ -76,13 +72,12 @@
             </div>
             <span ng-if="article.replies.length == 0"><br/>&nbsp;&nbsp;
                     暂无评论
-                </span>
-        </div>
+            </span>
         </div>
     </ion-content>
 
     <div class="to_top">
-        <i class="icon-totop" ng-click="toTop()"></i>
+        <i class="icon-totop" ng-click="toTop()" ng-if="article && article.replies.length>10"></i>
     </div>
 
     <div class="comment" ng-show="isFocus">
@@ -100,8 +95,7 @@
             <span>{{article.reply_count}}条评论</span>
         </a>
         <div class="row opr">
-            <i class="icon-zan" ng-click=""></i>
-            <span>222</span>
+            <i class="icon-s-share" ng-click="onShare()"></i>
         </div>
     </div>
 </ion-view>

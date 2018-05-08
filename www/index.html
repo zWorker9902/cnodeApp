@@ -1,4 +1,4 @@
-<html ng-app="appMain">
+<html ng-app="app">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;"/>
@@ -20,16 +20,21 @@
 
 	<script src="lib/ionic/js/ionic.bundle.min.js"></script>
 	<script src="lib/tabSlideBox/tabSlideBox.js"></script>
-	<script src="lib/ionic-image-lazy-load/ionic-image-lazy-load.js"></script>
 	<script src="lib/jquery/dist/jquery.js"></script>
+	<script src="lib/zdialog/zdialog.js"></script>
 	<script src="lib/ngCordova/ng-cordova.js"></script>
-	<script src="lib/ion-floating-menu/dist/ion-floating-menu.js"></script>
+	<script src="lib/moment/moment.js"></script>
+	<script src="lib/moment/lang/zh-cn.js"></script>
 
-	<script src="cordova.js"></script>
-	<script src="cordova_plugins.js"></script>
+	<!--<script src="cordova.js"></script>-->
+	<!--<script src="cordova_plugins.js"></script>-->
 </head>
 <body ng-controller="appMainCtrl">
 <ng-include src=" 'views/menu.html' "></ng-include>
+
+<div class="popDialog">
+	<span>{{tipsContent}}</span>
+</div>
 
 <script id="views/tabs.html" type="text/ng-template">
 	<ion-tabs class="tabs-icon-top slide-left-right">

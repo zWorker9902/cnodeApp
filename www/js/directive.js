@@ -5,7 +5,7 @@ angular.module('appMain.directive', [])
             link: function($scope, $scroller) {
                 $scroller.bind('scroll', function(e) {
                     console.log("-- [" + e.detail.scrollTop + "]");
-                    e.detail.scrollTop > 40 ? $(".to_top").addClass('visible'):$(".to_top").removeClass('visible');
+                    e.detail.scrollTop > 300 ? $(".to_top").addClass('visible'):$(".to_top").removeClass('visible');
                 });
             }
         }

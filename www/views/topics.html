@@ -34,10 +34,10 @@
     <ion-spinner icon="dots" class="spinner-dark" ng-if="topicsList.length<1"></ion-spinner>
 
     <div class="topic" ng-cloak>
-        <div class="topic_item" ng-repeat="topic in  topicsList | limitTo: 20">
+        <div class="topic_item" ng-repeat="topic in  topicsList">
             <a ui-sref="details({id: topic.id})">
                 <div class="row header">
-                    <img image-lazy-src="{{topic.author.avatar_url}}"  class="dfimg1" onerror="this.src='image/user.png'">
+                    <img ng-src="{{topic.author.avatar_url}}" onerror="this.src='image/default_user.png'">
                     <span class="name">{{topic.author.loginname}}</span>
                     <div class="type" ng-if="topic.top">
                         <i class="i_top">置顶</i>
@@ -55,7 +55,9 @@
                 <div class="title">
                     {{topic.title}}
                 </div>
+
                 <div class="content" ng-bind-html="topic.content | imgClearFilter"></div>
+
                 <div class="row footer">
                     <div class="tips">
                         <i class="icon-discuss"></i>
@@ -66,7 +68,7 @@
                         {{topic.visit_count}}
                     </div>
                     <div class="publish">
-                        2018-4-23
+                        {{topic.create_at | dateFilter}}
                     </div>
                 </div>
             </a>

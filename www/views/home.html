@@ -4,8 +4,7 @@
         <a class="button button-icon icon ion-navicon" menu-toggle="left"></a>
     </ion-nav-buttons>
 
-    <ion-content scroll="false">
-
+    <ion-content class="has-header" scroll="false">
         <tab-slide-box tab="0">
             <div class="slidebox">
                 <div class="tsb-icons">
@@ -13,19 +12,15 @@
                         <ion-scroll direction="x" class="tsb-hscroll"  delegate-handle="tabSlider">
                             <a href="javascript:;">最新</a>
                             <a href="javascript:;">热门</a>
-                            <a href="javascript:;">本地</a>
                         </ion-scroll>
                     </div>
                 </div>
-                <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" delegate-handle="tabSlider">
+                <ion-slide-box show-pager="false" delegate-handle="tabSlider">
                     <ion-slide>
                         <ng-include src=' "views/main.html" '></ng-include>
                     </ion-slide>
                     <ion-slide>
                         <ng-include src=' "views/topics.html" '></ng-include>
-                    </ion-slide>
-                    <ion-slide>
-                        <ng-include src=' "views/local.html" '></ng-include>
                     </ion-slide>
                 </ion-slide-box>
             </div>

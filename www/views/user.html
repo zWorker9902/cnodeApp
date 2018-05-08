@@ -1,61 +1,112 @@
 <ion-view title="我的" class="user">
-
     <ion-content>
-
-    	<div class="head" href="#">
-          <div class="img">
-              <img src="img/user/toux.png">
-          </div>
-          <div class="interest" ng-if=$root.user>
-              <h2>{{::$root.user.company}}</h2>
-          </div>
-          <div class="sign" ng-if=!$root.user>
-              <a href="#/login/">
-                  <h2>登录/注册</h2>
-              </a>
-          </div>
-          <div class="arrow">
-              <a class="icon ion-ios-arrow-right"></a>
-          </div>
+        <div class="head" href="#">
+            <div class="img">
+                <img src="img/user/toux.png">
+            </div>
+            <div class="interest" ng-if=$root.user>
+                <h2>{{::$root.user.company}}</h2>
+            </div>
+            <div class="sign" ng-if=!$root.user>
+                <a href="#/login/">
+                    <h2>登录/注册</h2>
+                </a>
+            </div>
+            <div class="arrow">
+                <a class="icon ion-ios-arrow-right"></a>
+            </div>
         </div>
 
         <div class="row">
-        	<a class="col" ng-click="messageList()">
-            	<img src="img/user/i03.png"><br/>
+            <a class="col" ng-click="messageList()">
+                <img src="img/user/i03.png"><br/>
                 消息
             </a>
             <a class="col" ng-click="myshop()">
-            	<img src="img/user/i05.png"><br/>
+                <img src="img/user/i05.png"><br/>
                 我的商铺
             </a>
-        	<a class="col">
-            	<img src="img/user/i01.png" ng-click="location()"><br/>
+            <a class="col">
+                <img src="img/user/i01.png" ng-click="location()"><br/>
                 商家定位
             </a>
             <a class="col" ng-click="manageProduct()">
-            	<img src="img/user/i02.png"><br/>
+                <img src="img/user/i02.png"><br/>
                 产品管理
             </a>
         </div>
         <div class="row">
-        	<a class="col" ng-click="shareApp()">
-            	<img src="img/user/i05.png"><br/>
+            <a class="col" ng-click="shareApp()">
+                <img src="img/user/i05.png"><br/>
                 分享给朋友
             </a>
             <a class="col" href="#/favorite">
-            	<img src="img/user/i06.png"><br/>
+                <img src="img/user/i06.png"><br/>
                 我的收藏
             </a>
             <a class="col" href="#/suggest">
-            	<img src="img/user/i08.png"><br/>
+                <img src="img/user/i08.png"><br/>
                 意见反馈
             </a>
             <a class="col" href="#/setting">
-            	<img src="img/user/i12.png"><br/>
+                <img src="img/user/i12.png"><br/>
                 设置
             </a>
         </div>
         <button class="button button-full button-positive" type="submit" ng-if="$root.user" ng-click="loginOut()"></button >
-
+        <!--<div class="list">
+          <a class="item item-icon-left item-icon-right information" ng-click="messageList()">
+            <i class="icon ion-ios-email-outline"></i>
+            消息
+            <i class="icon after ion-ios-arrow-right"></i>
+          </a>
+          <div class="package">
+              <a class="item item-icon-left item-icon-right" ng-click="myshop()" ng-if=$root.user>
+                <i class="icon ion-android-home"></i>
+                我的商铺
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-ios-star-outline"></i>
+                收藏
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right " ng-click="location()">
+                <i class="icon ion-ios-location"></i>
+                商家坐标定位
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right " ng-click="createProduct()">
+                <i class="icon ion-ios-compose"></i>
+                发布产品
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right " ng-click="manageProduct()">
+                <i class="icon ion-ios-list"></i>
+                产品管理
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right " href="#/suggest">
+                <i class="icon ion-ios-chatbubble"></i>
+                意见反馈
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right" ng-click="shareApp()">
+                <i class="icon ion-android-share-alt"></i>
+                分享给朋友 <!--<span style="font-size:12px;color:#bbb;"> ({{$root.version||'0.0.0'}})</span>
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-ios-bell-outline"></i>
+                活动
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+              <a class="item item-icon-left item-icon-right" href="#/shopping">
+                <i class="icon ion-ios-cart-outline"></i>
+                采购
+                <i class="icon after ion-ios-arrow-right"></i>
+              </a>
+          </div>
+        </div>-->
     </ion-content>
 </ion-view>

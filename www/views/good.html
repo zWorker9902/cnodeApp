@@ -10,17 +10,11 @@
                 on-refresh="getRefresh()">
         </ion-refresher>
 
-        <!--热门新闻-->
-        <div class="item item-divider">
-            <i class="icon-good"></i>
-            <span class="tips">精华</span>
-        </div>
-
         <ion-spinner icon="dots" class="spinner-dark" ng-if="topics.length<1"></ion-spinner>
 
-        <div class="good">
-            <div class="good_item" ng-repeat="topic in  topics | limitTo: 20">
-                <a t1 s1 ui-sref="details({id: topic.id})">
+        <div class="list good">
+            <div class="item" ng-repeat="topic in  goodList | limitTo: 20">
+                <a t1 ui-sref="details({id: topic.id})">
                     <div class="row header">
                         <img ng-src="{{topic.author.avatar_url}}"  onerror="this.src='img/error.jpg'"  ui-sref="user({name: topic.author.loginname})">
                         <span class="name">{{topic.author.loginname}}</span>

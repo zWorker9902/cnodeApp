@@ -1,41 +1,14 @@
 <!--缓存配置2-->
-<ion-view class="home" hide-nav-bar="true">
+<ion-view class="find" hide-nav-bar="true">
+
     <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
+            <!--<i class="icon ion-ios-search placeholder-icon"></i>-->
             <input type="search" placeholder="搜索">
         </label>
-        <button class="button button-clear">
-            取消
-        </button>
     </div>
 
-    <ion-content scroll="false">
+    <ion-content class="has-header"  scroll="false">
 
-        <tab-slide-box tab="0">
-            <div class="slidebox">
-                <div class="tsb-icons">
-                    <div class="tsb-ic-wrp">
-                        <ion-scroll direction="x" class="tsb-hscroll"  delegate-handle="tabSlider">
-                            <!--<a href="javascript:;" ng-repeat="tab in tabs" on-finish-render="onFinishRender()">{{tab}}</a>-->
-                            <a href="javascript:;">最新</a>
-                            <a href="javascript:;">热门</a>
-                            <a href="javascript:;">本地</a>
-                        </ion-scroll>
-                    </div>
-                </div>
-                <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" delegate-handle="tabSlider">
-                    <ion-slide>
-                        <ng-include src=' "views/main.html" '></ng-include>
-                    </ion-slide>
-                    <ion-slide>
-                        <ng-include src=' "views/topics.html" '></ng-include>
-                    </ion-slide>
-                    <ion-slide>
-                        <ng-include src=' "views/local.html" '></ng-include>
-                    </ion-slide>
-                </ion-slide-box>
-            </div>
-        </tab-slide-box>
     </ion-content>
 </ion-view>
