@@ -84,6 +84,24 @@ angular.module('app.route', [])
                 templateUrl: "views/login.html",
                 controller: 'loginCtrl'
             })
+            .state("joined", {
+                url: "/joined?name",
+                cache: false,
+                templateUrl: "views/joined.html",
+                controller: 'joinedCtrl'
+            })
+            .state("created", {
+                url: "/created?name",
+                cache: false,
+                templateUrl: "views/created.html",
+                controller: 'createdCtrl'
+            })
+            .state("collected", {
+                url: "/collected?name",
+                cache: false,
+                templateUrl: "views/collected.html",
+                controller: 'collectedCtrl'
+            })
             .state("topic", {
                 url: "/topic?id",
                 templateUrl: "views/topic.html",

@@ -37,7 +37,7 @@
     <!--热门推荐-->
     <div class="newsList topic">
 
-        <a class="item item-avatar" ng-repeat="topic in topicsList track by $index" href="#/app/topic/{{ topic.id }}" ng-if="false">
+        <a class="item item-avatar" ng-repeat="topic in topicsList  | limitTo:8" href="#/app/topic/{{ topic.id }}" ng-if="false">
             <img ng-src="{{ topic.author.avatar_url}}" onerror="this.src='image/default_user.png'">
             <h2 ng-bind="topic.title"></h2>
             <p>

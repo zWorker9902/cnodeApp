@@ -28,6 +28,42 @@ angular.module('appMain.filter', [])
             return html&&html.replace(/<img(?:.|\s)*?>/g, '');
         };
     }])
+    .filter('imgCountsFilter', [function () {
+        return function (html) {
+            if(html){
+                var imgs = html.match(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi);
+                var counts = 0;
+                if(imgs){
+                    if(imgs.length < 3){
+                        counts = 1;
+                    }else{
+                        counts = 3;
+                    }
+                }
+                return counts;
+            }else{
+                return -1;
+            }
+        };
+    }])
+    .filter('imgSourceFilter', [function () {
+        return function (html) {
+            if(html){
+                var imgSrcs = html.match(/(?<=(src="))[^"]*?(?=")/ig);
+                if(imgSrcs){
+                    if(imgSrcs.length >= 1 && imgSrcs.length <3){
+                        return imgSrcs[0];
+                    }else{
+                        return imgSrcs;
+                    }
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        };
+    }])
     /*
      * 日期字符串过滤
      * */

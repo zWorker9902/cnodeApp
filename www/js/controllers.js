@@ -25,19 +25,6 @@ angular.module('appMain.controllers', [])
                         template: '正在加载...'
                     });
                 }
-                $scope.tipsContent = "";
-                $scope.showTips = function(content){
-                    $scope.tipsContent = content;
-                    var popDialog = angular.element(".popDialog");
-                    popDialog.show();
-
-                    $timeout(function(){
-                            popDialog.hide();
-                        },
-                        2000)
-
-                }
-
                 $scope.hideLoad = function(){
                     $ionicLoading.hide();
                 }
@@ -193,10 +180,10 @@ angular.module('appMain.controllers', [])
                     }
 
                     $scope.topicsList = LocalSer.getLocal("topics_cnode") || topicsList();
-                    $scope.goodList = LocalSer.getLocal("good_cnode") || goodList();
-                    $scope.shareList = LocalSer.getLocal("share_cnode") || shareList();
-                    $scope.askList = LocalSer.getLocal("ask_cnode") || askList();
-                    $scope.jobList = LocalSer.getLocal("job_cnode") || jobList();
+                    LocalSer.getLocal("good_cnode") || goodList();
+                    LocalSer.getLocal("share_cnode") || shareList();
+                    LocalSer.getLocal("ask_cnode") || askList();
+                    LocalSer.getLocal("job_cnode") || jobList();
 
                     $scope.onRefresh = function() {
                         topicsList();
@@ -204,9 +191,11 @@ angular.module('appMain.controllers', [])
                         shareList();
                         askList();
                         jobList();
+                        console.log();
+
                         $timeout(function () {
                             $scope.$broadcast("scroll.refreshComplete")
-                        }, 300);
+                        }, 2000);
                     };
                 });
 
@@ -251,14 +240,12 @@ angular.module('appMain.controllers', [])
             try{
                 console.log("-- topics");
                 // 读取配置信息
-                var setting = LocalSer.getLocal('setting');
-                if(setting){
-                    rootStr.setting = setting;
-                }
+                var page = 1;
+                $scope.upLoad = false;
+                $scope.topicsList = LocalSer.getLocal("topics_cnode");
 
-                $scope.loadMore = function(){
-                    $scope.page ++;
-                    topicsSer.getTopics($scope.page).then(
+                $scope.onRefresh = function(){
+                    topicsSer.getTopics(1).then(
                         function(success){
                             if(success.data.success){
                                 $scope.topics.push(success.data.data);
@@ -269,6 +256,25 @@ angular.module('appMain.controllers', [])
                             console.log("error");
                         }
                     );
+                }
+                $scope.loadMore = function(){
+                    page ++;
+                    $scope.upLoad = false;
+                    console.log("--["+ page+"]");
+                    topicsSer.getTopics(page).then(
+                        function(success){
+                            if(success.data.success){
+                                $scope.topicsList = $scope.topicsList.concat(success.data.data);
+                                $scope.upLoad = true;
+                            }
+
+                        },
+                        function(error){
+                            console.log("error");
+                        }
+                    );
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
+
                 }
             }
             catch(error) {
@@ -339,6 +345,7 @@ angular.module('appMain.controllers', [])
         'messageSer',
         'rootStr',
         'LocalSer',
+        '$ionicSlideBoxDelegate',
         function($rootScope,
                  $scope,
                  $ionicHistory,
@@ -347,7 +354,8 @@ angular.module('appMain.controllers', [])
                  commonSer,
                  messageSer,
                  rootStr,
-                 LocalSer){
+                 LocalSer,
+                 $ionicSlideBoxDelegate){
             try{
                 console.log("-- main");
                 $scope.height = window.innerWidth / 1.94;
@@ -591,14 +599,12 @@ angular.module('appMain.controllers', [])
                         userSer.uncollectTopic(topic_id).then(function(success){
                             $scope.collect = success.data.success;
                             console.log(success.data.success?"已取消收藏":"取消收藏失败");
-                            $scope.showTips(success.data.success?"已取消收藏":"取消收藏失败");
                         });
                     }else{
                         // 未收藏，发送收藏消息
                         userSer.collectTopic(topic_id).then(function(success){
                             $scope.collect = success.data.success;
                             console.log(success.data.success?"收藏成功":"收藏失败");
-                            $scope.showTips(success.data.success?"收藏成功":"收藏失败");
                         });
                     }
                 }
@@ -668,12 +674,14 @@ angular.module('appMain.controllers', [])
         '$stateParams',
         '$ionicPopup',
         'userSer',
+        'LocalSer',
         function($rootScope,
                  $scope,
                  $state,
                  $stateParams,
                  $ionicPopup,
-                 userSer){
+                 userSer,
+                 LocalSer){
             console.log("-- author["+ $stateParams.name+"]");
             $scope.name = $stateParams.name;
             try{
@@ -688,7 +696,15 @@ angular.module('appMain.controllers', [])
                 userSer.getUser($scope.name).then(
                     function(success){
                         if(success.data.success){
-                            $rootScope.user = success.data.data;
+                            $scope.user = success.data.data;
+                            LocalSer.setLocal({
+                                key: "user_recent_topics",
+                                data: $scope.user.recent_topics
+                            });
+                            LocalSer.setLocal({
+                                key: "user_recent_replies",
+                                data: $scope.user.recent_replies
+                            });
                         }
                     },
                     function(){}
@@ -698,6 +714,10 @@ angular.module('appMain.controllers', [])
                     function(success){
                         if(success.data.success){
                             $rootScope.collects = success.data.data;
+                            LocalSer.setLocal({
+                                key: "user_collect",
+                                data: $rootScope.collects
+                            });
                         }
                     },
                     function(){}
@@ -839,7 +859,6 @@ angular.module('appMain.controllers', [])
                                         // confirmPopup.then(function(res) {
                                         // });
 
-                                        $scope.showTips(success.data.loginname +" 欢迎进入CNodeJS中文网");
                                         // $.DialogByZ.Autofade({Content:  success.data.loginname +" 欢迎进入CNodeJS中文网"});
 
                                         $timeout(function(){
@@ -902,20 +921,49 @@ angular.module('appMain.controllers', [])
             }
 
         }])
-    .controller('dynamicCtrl', ['$rootScope', '$scope', '$http', '$q', '$state', '$stateParams', '$ionicPopup',
-        function($rootScope, $scope, $http, $q, $state, $stateParams, $ionicPopup){
-            console.log("-- dynamic" + $stateParams.type);
-            $scope.type = $stateParams.type;
-            $scope.collects = $rootScope.collects;
-            $scope.recent_topics = $rootScope.user.recent_topics;
-            $scope.recent_replies = $rootScope.user.recent_replies;
+.controller('joinedCtrl', [
+    '$rootScope',
+    '$scope',
+    '$http',
+    '$q',
+    '$state',
+    '$stateParams',
+    '$ionicPopup',
+    'LocalSer',
+    function($rootScope, $scope, $http, $q, $state, $stateParams, $ionicPopup, LocalSer){
+        console.log("-- joined" + $stateParams.name);
+        $scope.title = $stateParams.name + "参与的话题";
+        $scope.recent_replies = LocalSer.getLocal('user_recent_replies');
+    }])
+    .controller('createdCtrl', [
+        '$rootScope',
+        '$scope',
+        '$stateParams',
+        'LocalSer',
+        function($rootScope, $scope,$stateParams, LocalSer){
+            console.log("-- joined" + $stateParams.name);
+            $scope.title = $stateParams.name + "的话题";
+            $scope.recent_topics = LocalSer.getLocal('user_recent_topics');
+        }])
+    .controller('collectedCtrl', [
+        '$rootScope',
+        '$scope',
+        '$stateParams',
+        '$filter',
+        '$log',
+        'LocalSer',
+        function($rootScope, $scope,$stateParams,$filter, $log,LocalSer){
+            console.log("-- joined" + $stateParams.name);
+            $scope.title = $stateParams.name + "的收藏";
+            var collect = LocalSer.getLocal('user_collect');
+            $scope.topics = [];
+            angular.forEach(collect, function(topic, index){
+                topic.type = $filter('imgCountsFilter')(topic.content);
+                topic.imgs = $filter('imgSourceFilter')(topic.content);
+                $log.info("[" + index + "] ["+ topic.type +"] ["+ topic.imgs +"]");
+                $scope.topics.push(topic);
+            });
 
-            $scope.changeTab = function(type){
-                $scope.type = type;
-            }
 
         }]);
 
-function showTips(Content){
-    $.DialogByZ.Autofade({Content:  Content});
-}

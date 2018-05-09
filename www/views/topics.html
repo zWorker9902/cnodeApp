@@ -3,7 +3,7 @@
     <ion-refresher
             pulling-text="下拉更新"
             refreshing-text="更新中..."
-            on-refresh="onRefresh()">
+            on-refresh="onTopics()">
     </ion-refresher>
 
     <div class="row func">
@@ -75,10 +75,11 @@
         </div>
     </div>
 
-    <!--<ion-infinite-scroll-->
-    <!--on-infinite="loadMore()"-->
-    <!--distance="1%">-->
-    <!--</ion-infinite-scroll>-->
+    <ion-infinite-scroll
+            ng-if="!upLoad"
+            on-infinite="loadMore()"
+            distance="1%" >
+    </ion-infinite-scroll>
 
 
 </ion-content>

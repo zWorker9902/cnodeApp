@@ -1,4 +1,24 @@
+<ion-view class="joined" view-title="{{title}}" cache-view="false">
+    <ion-nav-buttons>
+        <a class="button button-icon icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
 
-<ion-content class="created has-footer">
+    <ion-content class="has-header">
+        <div class="topics">
+            <div class="topic_item" ng-repeat="topic in recent_topics" ui-sref="details({id: topic.id})">
+                <a t0>
+                    <div class="content">
+                        <div class="title">
+                            {{topic.title}}
+                        </div>
+                        <div class="info">
+                            <span class="author left">发表：{{topic.author.loginname}}</span>
+                            <span class="push_time right">{{topic.last_reply_at  | dateFilter}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-</ion-content>
+        </div>
+    </ion-content>
+</ion-view>

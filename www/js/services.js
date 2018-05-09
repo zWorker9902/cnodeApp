@@ -87,7 +87,7 @@ angular.module('appMain.services', [])
             param:{
                 page: 1,
                 tab: "",
-                limit: 5,
+                limit: 10,
                 mdrender: true,
             },
             author:{

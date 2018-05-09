@@ -6,7 +6,7 @@
     <ion-content class="has-header">
         <div class="header">
             <a href="#">
-                <img image-lazy-src="{{user.avatar_url}}"  class="dfimg2">
+                <img ng-src="{{user.avatar_url}}"  class="dfuser">
             </a>
 
             <span class="name">{{user.loginname}}</span>
@@ -25,15 +25,15 @@
 
 
         <div class="list">
-            <a class="item" ui-sref="dynamic({type: 0})">
+            <a class="item" ui-sref="joined({name: user.loginname})">
                 参与
                 <span class="item-note">{{user.recent_replies.length}}</span>
             </a>
-            <a class="item" ui-sref="dynamic({type: 1})">
+            <a class="item" ui-sref="created({name: user.loginname})">
                 创建
                 <span class="item-note">{{user.recent_topics.length}}</span>
             </a>
-            <a class="item" ui-sref="dynamic({type: 2})">
+            <a class="item" ui-sref="collected({name: user.loginname})">
                 收藏
                 <span class="item-note">{{collects.length}}</span>
             </a>
